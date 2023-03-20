@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { signInWithEmailAndPassword} from 'firebase/auth';
-import { auth, createUserDocumentFromAuth, signInWithGooglePopup} from '../../utils/firebase/firebase.utils';
+import { createUserDocumentFromAuth, signInWithGooglePopup, signInAuthWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
 import toast from 'react-hot-toast';
 import { Fragment } from 'react';
 
-const SignInForm =() => {
+
+const SignInForm = () => {
 
   const defaultFormFields = {
     email: '',
@@ -18,8 +18,8 @@ const SignInForm =() => {
   }
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-
   const {email, password } = formFields;
+
 
   const handleChange = (event) => {
 
@@ -30,17 +30,15 @@ const SignInForm =() => {
   }
 
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  }
+  // const resetFormFields = () => {
+  //   setFormFields(defaultFormFields);
+  // }
 
   const handleSubmit = async (event) =>{
     event.preventDefault();
 
-    if(!email || ! password) return;
-    
     toast.promise(
-      signInWithEmailAndPassword(auth, email, password),
+      signInAuthWithEmailAndPassword(email, password),
       {
         success: 'You\'re Signed In!',
         loading: 'Signing in...',
@@ -65,8 +63,7 @@ const SignInForm =() => {
   }
 
   const signInWithGoogle = async() =>{
-    const {user} = signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    signInWithGooglePopup();  
 
   }
 
@@ -84,7 +81,7 @@ const SignInForm =() => {
           <Form.Control type='password' name='password' onChange={handleChange} placeholder='Password' required />
         </Form.Group>
         <Button variant='dark' name='emailPassword' type='submit'>
-          <FontAwesomeIcon className='me-2' icon={faRightToBracket} />
+          <FontAwesomeIcon className='me-2' icon={faRightToBracket}/>
           Sign In
         </Button>
         <Button variant='primary' name='google' type='button' className='ms-3' onClick={signInWithGoogle}>

@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { UserProvider } from './context/user.context';
+import { Toaster } from 'react-hot-toast';
+
+
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Toaster />
-      <App />
+      <UserProvider>
+        <App/>
+      </UserProvider>
+
     </BrowserRouter>
   </React.StrictMode>
   
