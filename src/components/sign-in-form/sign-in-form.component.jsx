@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { createUserDocumentFromAuth, signInWithGooglePopup, signInAuthWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
+import { signInWithGooglePopup, signInAuthWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
 import toast from 'react-hot-toast';
 import { Fragment } from 'react';
 
@@ -29,10 +29,6 @@ const SignInForm = () => {
 
   }
 
-
-  // const resetFormFields = () => {
-  //   setFormFields(defaultFormFields);
-  // }
 
   const handleSubmit = async (event) =>{
     event.preventDefault();
