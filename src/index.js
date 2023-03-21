@@ -7,7 +7,7 @@ import App from './App';
 import { UserProvider } from './context/user.context';
 import { ProductsProvider } from './context/products.context';
 import { Toaster } from 'react-hot-toast';
-
+import { CartProvider } from './context/cart.context';
 
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,9 +18,11 @@ root.render(
     <BrowserRouter>
       <Toaster />
       <UserProvider>
-        <ProductsProvider>
-          <App/>
-        </ProductsProvider>
+        <CartProvider>
+          <ProductsProvider>
+            <App/>
+          </ProductsProvider>
+        </CartProvider>
       </UserProvider>
 
     </BrowserRouter>

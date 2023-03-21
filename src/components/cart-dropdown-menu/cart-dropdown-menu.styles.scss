@@ -1,0 +1,22 @@
+.menu-container{
+  width: 300px;
+  height: 350px;
+  
+}
+
+.items-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.items-container::-webkit-scrollbar-thumb {
+  background-color: #343a40; /* Bootstrap dark color */
+  border-radius: 5px;
+}
+
+.items-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker shade for hover */
+}
+
+.items-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}

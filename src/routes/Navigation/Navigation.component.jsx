@@ -17,7 +17,7 @@ const Navigation = () => {
   return (
     <Fragment>
 
-      <Navbar bg="dark" variant='dark' className='shadow' expand="lg">
+      <Navbar bg="dark" variant='dark' className='shadow sticky-top' expand="lg">
         <Container fluid>
           <Link className='text-decoration-none ms-4' to='/'>
             <Navbar.Brand>
@@ -33,9 +33,9 @@ const Navigation = () => {
             </Link>
             {currentUser ? (
 
-              <Link className='nav-link me-4' onClick={signOutUser}>
+              <div role='button' className='nav-link me-4' onClick={signOutUser}>
                 SIGN OUT
-              </Link>
+              </div>
 
             ) : (
               <Link className='nav-link me-4' to='auth'>
