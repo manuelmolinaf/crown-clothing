@@ -19,7 +19,7 @@ const Navigation = () => {
 
       <Navbar bg="dark" variant='dark' className='shadow sticky-top' expand="lg">
         <Container fluid>
-          <Link className='text-decoration-none ms-4' to='/'>
+          <Link className='text-decoration-none ms-4' to='home'>
             <Navbar.Brand>
               <FontAwesomeIcon className='me-2 text-warning fs-4' icon={faCrown} />
               Crown Clothing
@@ -38,7 +38,7 @@ const Navigation = () => {
               </div>
 
             ) : (
-              <Link className='nav-link me-4' to='auth'>
+              <Link className='nav-link me-4' to='/'>
                 SIGN IN
               </Link>
             )}
