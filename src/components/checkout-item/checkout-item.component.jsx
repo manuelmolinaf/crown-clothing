@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap/Button';
 
 const CheckoutItem = ({ cartItem }) => {
 
-  const {RemoveItemFromCart, increaseCartItemQuantity, decreaseCartItemQuantity} = useContext(CartContext)
+  const {RemoveItemFromCart, addItemToCart, decreaseCartItemQuantity} = useContext(CartContext)
 
   const {imageUrl, name, quantity, price} = cartItem;
   
@@ -17,13 +17,8 @@ const CheckoutItem = ({ cartItem }) => {
     RemoveItemFromCart(cartItem);
   }
 
-  const increaseCartItemQuantityHandler = () => {
-    increaseCartItemQuantity(cartItem);
-  }
-  const decreaseCartItemQuantityHandler = (event) => {
-    event.stopPropagation();
-    decreaseCartItemQuantity(cartItem);
-  }
+  const increaseCartItemQuantityHandler = () => addItemToCart(cartItem);
+  const decreaseCartItemQuantityHandler = (event) => decreaseCartItemQuantity(cartItem);
 
   return (
 
