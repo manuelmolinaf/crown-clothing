@@ -10,10 +10,10 @@ const Shop = () => {
 
   return (
     
-    <Row className="no-gutters -3">
+    <Row className="no-gutters d-flex">
       {products.map((product) => {
         return(
-          <Col key={product.id} xs={3} className='p-3'>
+          <Col key={product.id} xs={3} className='p-3' style={{minWidth:'300px'}}>
             <ProductCard key={product.id} product={product} />
           </Col>
   

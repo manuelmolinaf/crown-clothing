@@ -4,7 +4,7 @@ import { CartContext } from '../../context/cart.context';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './product-card.styles.scss';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProductCard = ({ product }) => {
@@ -32,8 +32,8 @@ const ProductCard = ({ product }) => {
 
           <div className='ms-auto'>
             <Button variant="dark" onClick={addToCartHandler}>
-              <FontAwesomeIcon icon={faCartShopping} className='me-2'></FontAwesomeIcon>
-              Add to cart
+              <FontAwesomeIcon icon={faShoppingBag} className='me-2'></FontAwesomeIcon>
+              Add to Cart
             </Button>
           </div>
         </div>

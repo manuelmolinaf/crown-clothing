@@ -40,7 +40,7 @@ const CheckoutItem = ({ cartItem }) => {
         <span className='fs-3'>{quantity}</span>
         <FontAwesomeIcon role='button' className='ms-2 fs-5' style={{userSelect:'none'}} icon={faChevronRight} onClick={increaseCartItemQuantityHandler} />
       </Col>
-      <Col className='d-flex align-items-center justify-content-center'>
+      <Col className='d-flex align-items-center fs-3 justify-content-center'>
         {'$' + (quantity * price)}
       </Col>
 
