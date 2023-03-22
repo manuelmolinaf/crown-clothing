@@ -18,12 +18,10 @@ const ProductCard = ({ product }) => {
   return (
 
     <Card>
-      <img variant="top" src={imageUrl} style={{ height: '350px', width: '100%', objectFit: 'cover' }} />
-      <Card.Body className='w-auto'>
+      <Card.Img variant="top" src={imageUrl} style={{ height: '350px', objectFit: 'cover' }} />
+      <Card.Body>
         <Card.Title className='d-flex fs-4 align-items-center'>
-          <span>
-            {name}
-          </span>
+          <span className='product-card-name h-auto'>{name}</span>
         </Card.Title>
         <div className='d-flex align-items-center'>
           <span className='ms-2 fs-3 fw-bold'>
