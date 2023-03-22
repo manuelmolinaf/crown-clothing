@@ -16,24 +16,18 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    // <div className='product-card-container'>
-    //   <img className='rounded' src={imageUrl} alt={`${name}`} />
-    //   <div className='footer'>
-    //     <span className='name'>{name}</span>
-    //     <span className='price'>{price}</span>
-    //   </div>
-    //   <Button buttonType='inverted' onClick={addToCartHandler}>Add to cart</Button>
-    // </div>
 
     <Card>
-      <Card.Img variant="top" src={imageUrl} style={{height:'360px', width:'100%', objectFit:'cover'}} />
+      <Card.Img variant="top" src={imageUrl} style={{ height: '360px', width: '100%', objectFit: 'cover' }} />
       <Card.Body>
-        <div className='d-flex flex-wrap align-items-center'>
-          <span className='fs-4 fw-bold'>
+        <Card.Title className='d-flex fs-4 align-items-center'>
+          <span>
             {name}
           </span>
-          <span className='fs-4 fw-bold ms-3 text-success'>
-          {'$'+price}
+        </Card.Title>
+        <div className='d-flex align-items-center'>
+          <span className='ms-2 fs-3 fw-bold'>
+            {'$' + price}
           </span>
 
           <div className='ms-auto'>
@@ -42,10 +36,6 @@ const ProductCard = ({ product }) => {
               Add to cart
             </Button>
           </div>
-          
-        </div>
-        <div className='d-flex justify-content-center'>
-          
         </div>
       </Card.Body>
     </Card>

@@ -9,16 +9,14 @@ const Shop = () => {
   const {products} = useContext(ProductsContext);
 
   return (
-
-    
     
     <Row className="no-gutters -3">
       {products.map((product) => {
         return(
-          <Col xs={3} className='p-3'>
+          <Col key={product.id} xs={3} className='p-3'>
             <ProductCard key={product.id} product={product} />
           </Col>
-          
+  
         )
       })}
     </Row>
