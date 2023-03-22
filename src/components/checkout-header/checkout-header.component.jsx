@@ -10,10 +10,10 @@ const CheckoutHeader = () => (
       Description
     </Col>
     <Col className='d-flex align-items-center justify-content-center'>
-      Description
+      Quantity
     </Col>
     <Col className='d-flex align-items-center justify-content-center'>
-      Quantity
+      Price
     </Col>
     <Col className='d-flex align-items-center justify-content-center'>
       Remove

@@ -36,9 +36,9 @@ const CheckoutItem = ({ cartItem }) => {
         {name}
       </Col>
       <Col className='d-flex align-items-center justify-content-center'>
-        <FontAwesomeIcon role='button' className='me-2 fs-3' style={{userSelect:'none'}} icon={faChevronLeft} onClick={(event) => decreaseCartItemQuantityHandler(event)} />
-        <span className='fs-2'>{quantity}</span>
-        <FontAwesomeIcon role='button' className='ms-2 fs-3' style={{userSelect:'none'}} icon={faChevronRight} onClick={increaseCartItemQuantityHandler} />
+        <FontAwesomeIcon role='button' className='me-2 fs-5' style={{userSelect:'none'}} icon={faChevronLeft} onClick={(event) => decreaseCartItemQuantityHandler(event)} />
+        <span className='fs-3'>{quantity}</span>
+        <FontAwesomeIcon role='button' className='ms-2 fs-5' style={{userSelect:'none'}} icon={faChevronRight} onClick={increaseCartItemQuantityHandler} />
       </Col>
       <Col className='d-flex align-items-center justify-content-center'>
         {'$' + (quantity * price)}

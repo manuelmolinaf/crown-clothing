@@ -28,11 +28,11 @@ const ProductCard = ({ product }) => {
     <Card>
       <Card.Img variant="top" src={imageUrl} style={{height:'360px', width:'100%', objectFit:'cover'}} />
       <Card.Body>
-        <div className='d-flex align-items-center'>
+        <div className='d-flex flex-wrap align-items-center'>
           <span className='fs-4 fw-bold'>
             {name}
           </span>
-          <span className='fs-4 fw-bold ms-3'>
+          <span className='fs-4 fw-bold ms-3 text-success'>
           {'$'+price}
           </span>
 
