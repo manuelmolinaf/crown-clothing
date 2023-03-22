@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import './product-card.styles.scss';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
@@ -13,6 +14,8 @@ const ProductCard = ({ product }) => {
 
   const addToCartHandler = () => {
     addItemToCart(product);
+    toast.success('Item added to cart!');
+
   }
 
   return (
