@@ -8,7 +8,7 @@ import { CartContext } from "../../context/cart.context";
 const CartIcon = () => {
 
   const { cartCount } = useContext(CartContext);
-  
+
   const handleClose = () => {
     // Do something to close the dropdown
     // For example, you can use state to toggle the visibility of the dropdown
@@ -19,14 +19,19 @@ const CartIcon = () => {
       <Dropdown.Toggle variant="transparent" className="p-0" id="dropdown-basic">
         <span className="position-relative">
           <FontAwesomeIcon className="text-white fs-2" icon={faBagShopping} />
-          <Badge
-            pill
-            bg="danger"
-            className="position-absolute top-0 start-100 translate-middle"
-            style={{ marginTop: "15px" }}
-          >
-            {cartCount}
-          </Badge>
+          {cartCount > 0 ?
+            <Badge
+              pill
+              bg="danger"
+              className="position-absolute top-0 start-100 translate-middle"
+              style={{ marginTop: "15px" }}
+            >
+              {cartCount}
+            </Badge>
+            :
+            <></>
+          }
+
         </span>
       </Dropdown.Toggle>
 
