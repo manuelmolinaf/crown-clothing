@@ -14,14 +14,6 @@ const Shop = () => {
     
     <Container>
       <Row className="no-gutters d-flex">
-        {/* {categoriesMap['hats'].map((product) => {
-          return(
-            <Col key={product.id} xs={3} className='p-3' style={{minWidth:'300px'}}>
-              <ProductCard key={product.id} product={product} />
-            </Col>
-          )
-        })} */}
-
         {
           Object.keys(categoriesMap).map( title =>categoriesMap[title].slice(0,4).map((product) => {
             return(

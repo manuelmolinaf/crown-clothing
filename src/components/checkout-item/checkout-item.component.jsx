@@ -23,12 +23,12 @@ const CheckoutItem = ({ cartItem }) => {
   return (
 
     <Row className='p-3 border-bottom'>
-      <Col>
+      <Col className='d-flex align-items-center justify-content-center'>
         <img
           src={imageUrl}
           alt={name}
-          className='w-100 h-auto rounded'
-          style={{ objectFit: 'cover', width: '100%' }}
+          className='rounded'
+          style={{ objectFit: 'cover', height:'150px', width:'150px' }}
         />
       </Col>
       <Col className='fw-bold fs-4 d-flex align-items-center justify-content-center'>
