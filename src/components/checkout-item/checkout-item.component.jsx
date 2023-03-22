@@ -22,7 +22,7 @@ const CheckoutItem = ({ cartItem }) => {
 
   return (
 
-    <Row className='p-3 border-bottom'>
+    <Row className='p-3 border-bottom' >
       <Col className='d-flex align-items-center justify-content-center'>
         <img
           src={imageUrl}
@@ -44,7 +44,7 @@ const CheckoutItem = ({ cartItem }) => {
         {'$' + (quantity * price)}
       </Col>
 
-      <Col className='d-flex align-items-center justify-content-center text-danger fs-2'>
+      <Col className='d-flex align-items-center justify-content-center text-danger fs-2' style={{userSelect:'none'}}>
         <FontAwesomeIcon role='button' icon={faXmark} onClick={removeCartItemHandler} />
       </Col>
     </Row>
