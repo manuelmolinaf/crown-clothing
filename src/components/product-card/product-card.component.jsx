@@ -18,8 +18,8 @@ const ProductCard = ({ product }) => {
   return (
 
     <Card>
-      <Card.Img variant="top" src={imageUrl} style={{ height: '360px', width: '100%', objectFit: 'cover' }} />
-      <Card.Body>
+      <img variant="top" src={imageUrl} style={{ height: '350px', width: '100%', objectFit: 'cover' }} />
+      <Card.Body className='w-auto'>
         <Card.Title className='d-flex fs-4 align-items-center'>
           <span>
             {name}

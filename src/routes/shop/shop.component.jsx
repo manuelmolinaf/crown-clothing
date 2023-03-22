@@ -8,7 +8,7 @@ import { Fragment } from 'react';
 const Shop = () => {
 
   const {categoriesMap} = useContext(categoriesContext);
-  console.log(categoriesMap);
+  
 
   return (
     
