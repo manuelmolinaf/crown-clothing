@@ -1,18 +1,19 @@
 import { createContext } from "react";
-import { useState, useEffect } from "react";
+import { useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer.utils";
 
-const addCartItem = ( cartItems, productToAdd) => {
+const addCartItem = (cartItems, productToAdd) => {
 
   const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
 
-  if(existingCartItem){
-    return cartItems.map( cartItem => cartItem.id === productToAdd.id ? 
-      {...cartItem, quantity: cartItem.quantity + 1} : 
+  if (existingCartItem) {
+    return cartItems.map(cartItem => cartItem.id === productToAdd.id ?
+      { ...cartItem, quantity: cartItem.quantity + 1 } :
       cartItem
-      );
+    );
   }
 
-  return [...cartItems, {...productToAdd, quantity:1}]
+  return [...cartItems, { ...productToAdd, quantity: 1 }]
 }
 
 const removeCartItem = (cartItems = [], cartItemToRemove) => {
@@ -23,53 +24,81 @@ const removeCartItem = (cartItems = [], cartItemToRemove) => {
 
 export const CartContext = createContext({
   cartItems: [],
-  addItemToCart:() =>{},
-  RemoveItemFromCart:() =>{},
-  decreaseCartItemQuantity: () =>{},
-  cartCount:0,
-  cartTotal:0
+  addItemToCart: () => { },
+  RemoveItemFromCart: () => { },
+  decreaseCartItemQuantity: () => { },
+  cartCount: 0,
+  cartTotal: 0
 })
 
-export const CartProvider = ({children}) => {
+const INITIAL_STATE = {
+  cartItems: [],
+  cartCount: 0,
+  cartTotal: 0
 
-  const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
-  const [cartTotal, setCartTotal] = useState(0);
-  
+}
 
+export const CART_ACTION_TYPES = {
+  'SET_CART_ITEMS': 'SET_CART_ITEMS',
 
-  const addItemToCart = (productToAdd) =>{
-    setCartItems(addCartItem(cartItems, productToAdd));
+}
+
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+
+    case CART_ACTION_TYPES.SET_CART_ITEMS:
+      return {
+        ...state,
+        ...payload
+      };
+
+    default:
+      throw new Error(`Unhandled type ${type} in cartReducer`)
+  }
+
+}
+
+export const CartProvider = ({ children }) => {
+
+  const [{ cartItems, cartCount, cartTotal }, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+
+  const updateCartItemsReducer = (newCartItems) => {
+    const newCartCount = newCartItems.reduce((quantity, cartItem) => quantity + cartItem.quantity, 0);
+
+    const newCartTotal = newCartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
+
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
+        cartTotal: newCartTotal,
+        cartCount: newCartCount,
+        cartItems: newCartItems
+      })
+    );
+  }
+
+  const addItemToCart = (productToAdd) => {
+    const newCartItems = addCartItem(cartItems, productToAdd);
+    updateCartItemsReducer(newCartItems);
   }
 
   const RemoveItemFromCart = (cartItemToRemove) => {
-    setCartItems(removeCartItem(cartItems, cartItemToRemove));
+    const newCartItems = removeCartItem(cartItems, cartItemToRemove);
+    updateCartItemsReducer(newCartItems);
   }
 
   const decreaseCartItemQuantity = (cartItemToDecrease) => {
-    if(cartItemToDecrease.quantity <= 1) return;
-    setCartItems(cartItems.map( cartItem => cartItem.id === cartItemToDecrease.id ?  
-      {...cartItem, quantity: cartItem.quantity-1} : cartItem))
+    if (cartItemToDecrease.quantity <= 1) return;
+    const newCartItems = cartItems.map(cartItem => cartItem.id === cartItemToDecrease.id ?
+      { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem);
+    updateCartItemsReducer(newCartItems);
   }
 
 
-  useEffect(()=>{
-    const newCartCount = cartItems.reduce((quantity, cartItem) =>  quantity + cartItem.quantity, 0);
-    setCartCount(newCartCount);
-  }, [cartItems]);
 
-  useEffect(() => {
-    const newCartTotal = cartItems.reduce(
-      (total, cartItem) => total + cartItem.quantity * cartItem.price,
-      0
-    );
-    setCartTotal(newCartTotal);
-  }, [cartItems]);
-  
+  const value = { cartItems, addItemToCart, RemoveItemFromCart, decreaseCartItemQuantity, cartCount, cartTotal };
 
-  const value = {cartItems, addItemToCart, RemoveItemFromCart, decreaseCartItemQuantity, cartCount, cartTotal};
-
-  return(
+  return (
     <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
