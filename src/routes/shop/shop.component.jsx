@@ -6,8 +6,6 @@ import Category from '../category/category.component';
 
 const Shop = () => {
 
-
-
   return (
 
     <Container>
@@ -15,7 +13,6 @@ const Shop = () => {
         <Route index element={<CategoriesPreview/>}/>
         <Route path=':category' element={<Category/>}/>
       </Routes>
-
     </Container>
 
   )

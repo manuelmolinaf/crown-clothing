@@ -3,15 +3,18 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Outlet, Link } from 'react-router-dom';
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
-import { UserContext } from '../../context/user.context';
+
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../components/cart-icon/cart-icon.component';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 const Navigation = () => {
-  const { currentUser } = useContext(UserContext);
+  
+  const currentUser = useSelector(selectCurrentUser);
 
 
   return (

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { UserProvider } from './context/user.context';
+import {Provider} from 'react-redux';
 import { CategoriesProvider } from './context/categories.context';
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/cart.context';
+import { store } from './store/store';
 
 import './index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,17 +15,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Toaster />
-      <UserProvider>
-        <CartProvider>
-          <CategoriesProvider>
-            <App/>
-          </CategoriesProvider>
-        </CartProvider>
-      </UserProvider>
-
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Toaster />
+          <CartProvider>
+            <CategoriesProvider>
+              <App/>
+            </CategoriesProvider>
+          </CartProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
   
 );
