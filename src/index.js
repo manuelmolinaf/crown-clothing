@@ -4,7 +4,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import {Provider} from 'react-redux';
-import { CategoriesProvider } from './context/categories.context';
 import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/cart.context';
 import { store } from './store/store';
@@ -19,9 +18,7 @@ root.render(
       <BrowserRouter>
         <Toaster />
           <CartProvider>
-            <CategoriesProvider>
-              <App/>
-            </CategoriesProvider>
+          <App/>
           </CartProvider>
       </BrowserRouter>
     </Provider>

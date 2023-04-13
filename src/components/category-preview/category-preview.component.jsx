@@ -7,8 +7,8 @@ const CategoryPreview = ({title, products}) => {
 
   return (
     <Fragment>
-      <Row className="no-gutters d-flex">
-        <Col className='p-3 pb-0 fs-2 fw-bold'>
+      <Row className="no-gutters">
+        <Col className='p-3 pb-0 fs-1 fw-bold d-flex justify-content-center'>
           <Link className='text-decoration-none text-dark' to={title}>{title.toUpperCase()}</Link>
         </Col>
       </Row>

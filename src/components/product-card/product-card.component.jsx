@@ -23,20 +23,20 @@ const ProductCard = ({ product }) => {
     <Card>
       <Card.Img variant="top" src={imageUrl} style={{ height: '350px', objectFit: 'cover' }} />
       <Card.Body>
-        <Card.Title className='d-flex fs-4 align-items-center'>
+        <Card.Title className='d-flex justify-content-center m-0'>
           <span className='product-card-name h-auto'>{name}</span>
         </Card.Title>
-        <div className='d-flex align-items-center'>
-          <span className='ms-2 fs-3 fw-bold'>
+        <div className='d-flex justify-content-center'>
+          <span className='fs-2 fw-bold'>
             {'$' + price}
           </span>
+        </div>
 
-          <div className='ms-auto'>
-            <Button variant="dark" onClick={addToCartHandler}>
-              <FontAwesomeIcon icon={faShoppingBag} className='me-2'></FontAwesomeIcon>
-              Add to Cart
-            </Button>
-          </div>
+        <div className='d-flex justify-content-center mt-3'>
+          <Button variant="dark" onClick={addToCartHandler}>
+            <FontAwesomeIcon icon={faShoppingBag} className='me-2'></FontAwesomeIcon>
+            Add to Cart
+          </Button>
         </div>
       </Card.Body>
     </Card>
